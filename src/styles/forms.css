@@ -26,7 +26,7 @@
   width: 100%;
   background: transparent;
   border: none;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--chocolate);
   color: var(--ivory);
   font-family: var(--sans);
   font-size: clamp(0.95rem, 1.2vw, 1rem);
@@ -38,6 +38,22 @@
 }
 
 .field select option { background: var(--ink-soft); color: var(--ivory); }
+
+/* On the light (ivory) contact section, the typed text must read dark
+   so the filled-in words are visible against the light background. */
+.light-theme .field input,
+.light-theme .field select,
+.light-theme .field textarea {
+  color: var(--ink);
+  border-bottom-color: var(--chocolate);
+  caret-color: var(--ink);
+}
+
+.light-theme .field input::placeholder,
+.light-theme .field textarea::placeholder {
+  color: var(--gray-dark);
+  opacity: 1;
+}
 
 .field input:focus,
 .field select:focus,
