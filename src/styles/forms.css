@@ -1,0 +1,191 @@
+/* ---------- Contact form ---------- */
+.form-grid {
+  display: grid;
+  gap: clamp(1rem, 2vh, 1.4rem);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .form-grid { grid-template-columns: repeat(2, 1fr); }
+  .form-grid .full { grid-column: 1 / -1; }
+}
+
+.field label {
+  display: block;
+  font-size: clamp(0.58rem, 1vw, 0.64rem);
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: clamp(0.4rem, 1vh, 0.6rem);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  color: var(--ivory);
+  font-family: var(--sans);
+  font-size: clamp(0.95rem, 1.2vw, 1rem);
+  font-weight: 300;
+  padding: clamp(0.5rem, 1vh, 0.7rem) 0;
+  transition: border-color 0.4s var(--ease);
+  border-radius: 0;
+  color-scheme: dark;
+}
+
+.field select option { background: var(--ink-soft); color: var(--ivory); }
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-bottom-color: var(--champagne);
+}
+
+.field textarea { resize: vertical; min-height: 100px; }
+
+.field.error input,
+.field.error select,
+.field.error textarea { border-bottom-color: #b3543f; }
+
+.field-msg {
+  font-size: clamp(0.65rem, 1vw, 0.72rem);
+  color: #cf8371;
+  margin-top: clamp(0.2rem, 0.5vh, 0.4rem);
+  letter-spacing: 0.04em;
+}
+
+.form-actions { margin-top: clamp(1.5rem, 3vh, 2.2rem); display: flex; align-items: center; gap: clamp(1rem, 2vw, 1.5rem); flex-wrap: wrap; }
+
+.btn[disabled] { opacity: 0.55; pointer-events: none; }
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(16,16,16,0.3);
+  border-top-color: var(--ink);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.form-success {
+  border: 1px solid var(--champagne-soft);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  text-align: center;
+  animation: riseIn 0.8s var(--ease) both;
+}
+
+.form-success .serif { font-size: clamp(1.8rem, 4vw, 2.8rem); display: block; margin-bottom: 0.8rem; }
+.form-success p { color: var(--gray); max-width: 34rem; margin: 0 auto 1.8rem; }
+
+.form-error-banner {
+  border: 1px solid #b3543f;
+  color: #cf8371;
+  padding: 0.9rem 1.2rem;
+  font-size: 0.85rem;
+  margin-bottom: 1.6rem;
+}
+
+/* ---------- Contact info list ---------- */
+.contact-info li {
+  display: flex;
+  gap: 1.4rem;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+
+.contact-info .k {
+  font-size: 0.64rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--champagne);
+  min-width: 7.5rem;
+}
+
+.contact-info a:hover { color: var(--champagne); }
+
+/* ---------- Small-screen refinements ---------- */
+@media (max-width: 480px) {
+  .form-actions .btn { width: 100%; justify-content: center; }
+  .form-actions { gap: 1rem; }
+  .contact-info .k { min-width: 5.5rem; }
+  .service-details { grid-template-columns: 1fr; }
+}
+
+/* ---------- Services page showcase ---------- */
+.service-row {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+  padding-block: clamp(3rem, 7vw, 5.5rem);
+  border-top: 1px solid var(--line-dark);
+}
+
+@media (min-width: 900px) {
+  .service-row { grid-template-columns: 6fr 5fr; }
+  .service-row:nth-child(even) .service-row-media { order: -1; }
+}
+
+.service-row-num {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--champagne-soft);
+}
+
+.service-row-body h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); margin: 0.8rem 0 0.4rem; }
+.service-row-body .tagline { color: var(--gray-dark); font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 1.4rem; }
+.service-row-body .lead { margin-bottom: 1.6rem; }
+
+.service-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.7rem 1.5rem;
+  margin: 1.6rem 0 2rem;
+}
+
+.service-details li {
+  font-size: 0.86rem;
+  color: var(--gray-dark);
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.service-details li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 1px;
+  background: var(--champagne);
+}
+
+/* ---------- About editorial ---------- */
+.about-grid {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center;
+}
+
+@media (min-width: 900px) { .about-grid { grid-template-columns: 1fr 1fr; } }
+
+.about-grid h2 { margin: 1.2rem 0 1.6rem; }
+
+.philosophy-quote {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+  line-height: 1.25;
+  max-width: 22ch;
+}
+
+.philosophy-quote em { color: var(--champagne); font-style: italic; }

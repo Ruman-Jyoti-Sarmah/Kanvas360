@@ -1,0 +1,95 @@
+/* ---------- Premium Logo Intro ---------- */
+.logo-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0a0a0a;
+  animation: introFadeOut 0.9s var(--ease) 1.85s forwards;
+  pointer-events: auto;
+}
+
+.logo-intro-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(150px, 28vw, 250px);
+  height: clamp(150px, 28vw, 250px);
+}
+
+/* Soft radial golden glow behind the logo */
+.logo-intro-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.35) 0%, rgba(212, 175, 55, 0.12) 45%, rgba(10, 10, 10, 0) 70%);
+  animation: glowPulse 2.2s var(--ease) 0.15s both;
+  pointer-events: none;
+}
+
+.logo-intro-img {
+  position: relative;
+  z-index: 2;
+  width: clamp(120px, 22vw, 210px);
+  height: auto;
+  object-fit: contain;
+  opacity: 0;
+  transform: scale(0.92);
+  animation: introReveal 1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+  will-change: opacity, transform;
+}
+
+/* A subtle champagne light sweep across the logo */
+.logo-intro-shine {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 244, 224, 0.28) 48%,
+    rgba(244, 240, 232, 0.1) 52%,
+    transparent 70%
+  );
+  opacity: 0;
+  mix-blend-mode: screen;
+  animation: shineSweep 1.4s ease-out 0.75s both;
+}
+
+/* Hold phase — logo rests fully visible before the screen fades */
+@keyframes introReveal {
+  0% { opacity: 0; transform: scale(0.92); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes glowPulse {
+  0% { opacity: 0; transform: scale(0.9); }
+  40% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0.75; transform: scale(1.05); }
+}
+
+@keyframes shineSweep {
+  0% { opacity: 0; transform: translateX(-60%); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(60%); }
+}
+
+@keyframes introFadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+/* Reduced motion: skip the cinematic reveal and show the site immediately */
+@media (prefers-reduced-motion: reduce) {
+  .logo-intro,
+  .logo-intro-img,
+  .logo-intro-glow,
+  .logo-intro-shine {
+    animation: none !important;
+  }
+  .logo-intro { display: none; }
+}
