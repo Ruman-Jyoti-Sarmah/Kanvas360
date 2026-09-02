@@ -5,17 +5,35 @@
    ================================================================== */
 
 :root {
-  --ink: #101010;
-  --ink-soft: #1a1917;
-  --ivory: #f4f0e8;
-  --ivory-warm: #ede7db;
-  --champagne: #c8a86b;
-  --champagne-soft: rgba(200, 168, 107, 0.35);
-  --chocolate: #d2691e;
-  --gray: #8f8b83;
-  --gray-dark: #5c5952;
-  --line: rgba(255, 255, 255, 0.12);
-  --line-dark: rgba(16, 16, 16, 0.14);
+  /* ============================================================
+     KANVAS360 — IVORY LUXURY PALETTE
+     Derived from the actual logo asset (charcoal · ivory · bronze).
+     Not a dark theme anymore — warm ivory is the dominant surface.
+     ============================================================ */
+  --charcoal: #27231F;
+  --charcoal-soft: #403A33;
+  --ink: var(--charcoal);
+  --ink-soft: #322D27;
+
+  --ivory: #F5F0E6;
+  --ivory-light: #FAF8F2;
+  --cream: #EEE6D6;
+  --cream-dark: #E4DAC7;
+  --ivory-warm: var(--cream);
+
+  --champagne: #B59A68;
+  --champagne-deep: #8A7350;
+  --champagne-soft: rgba(181, 154, 104, 0.35);
+
+  --gray: rgba(39, 35, 31, 0.62);
+  --gray-dark: #403A33;
+
+  --line: rgba(39, 35, 31, 0.14);
+  --line-dark: rgba(39, 35, 31, 0.18);
+  --line-light: rgba(250, 248, 242, 0.14);
+
+  --wa-green: #25D366;
+
   --serif: 'Cormorant Garamond', 'Times New Roman', serif;
   --sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -28,8 +46,8 @@
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
 body {
-  background: var(--ink);
-  color: var(--ivory);
+  background: var(--ivory);
+  color: var(--charcoal);
   font-family: var(--sans);
   font-weight: 300;
   line-height: 1.7;
@@ -66,7 +84,7 @@ h1, h2, h3, .serif {
   font-weight: 500;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--champagne);
+  color: var(--champagne-deep);
   display: block;
 }
 
@@ -90,9 +108,13 @@ h1, h2, h3, .serif {
 .section { padding-block: var(--section-y); position: relative; }
 
 .light-theme {
-  background: var(--ivory);
-  color: var(--ink);
+  background: var(--ivory-light);
+  color: var(--charcoal);
 }
+
+/* Slightly deeper creamy tone — used to alternate section rhythm. */
+.tone-cream { background: var(--cream); }
+.tone-cream-dark { background: var(--cream-dark); }
 
 /* ---------- Buttons ---------- */
 .btn {
@@ -135,25 +157,31 @@ h1, h2, h3, .serif {
 }
 
 .btn:hover::before { transform: scaleY(1); }
-.btn:hover { color: var(--ink); }
+.btn:hover { color: var(--charcoal); }
 
 .btn .arrow { transition: transform 0.5s var(--ease); }
 .btn:hover .arrow { transform: translateX(5px); }
 
-.btn-solid { background: var(--ivory); color: var(--ink); }
+/* Primary CTA — charcoal surface, ivory text, subtle gold sweep. */
+.btn-solid { background: var(--charcoal); color: var(--ivory); }
 .btn-solid::before { background: var(--champagne); }
+.btn-solid:hover {
+  color: var(--charcoal);
+  box-shadow: 0 10px 26px rgba(39, 35, 31, 0.18);
+}
 
-.btn-outline { border-color: var(--line); }
+/* Secondary CTA — transparent, charcoal hairline border. */
+.btn-outline { border-color: var(--line-dark); }
 .light-theme .btn-outline { border-color: var(--line-dark); }
 
-.btn-outline:hover { border-color: var(--champagne); }
+.btn-outline:hover { border-color: var(--champagne); color: var(--charcoal); }
 
 .text-link {
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--champagne);
+  color: var(--champagne-deep);
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
@@ -243,14 +271,14 @@ h1, h2, h3, .serif {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.32;
+  opacity: 0.5;
 }
 
 .page-hero-bg::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(16,16,16,0.55), rgba(16,16,16,0.75));
+  background: linear-gradient(to bottom, rgba(245,240,230,0.94) 0%, rgba(250,248,242,0.72) 100%);
 }
 
 .page-hero .container { position: relative; z-index: 1; padding-inline: var(--gutter); }

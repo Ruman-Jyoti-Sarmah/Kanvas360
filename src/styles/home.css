@@ -7,6 +7,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background: var(--ivory);
   padding-top: clamp(5rem, calc(clamp(60px, 12vw, 76px) + 3vw), 8rem);
   padding-bottom: clamp(2rem, 4vh, 4rem);
 }
@@ -18,6 +19,7 @@
   height: 100%;
   object-fit: cover;
   object-position: center 35%;
+  opacity: 0.72;
 }
 
 @media (min-width: 1024px) {
@@ -26,12 +28,20 @@
   }
 }
 
+/* Warm ivory editorial wash instead of the old dark overlay — the
+   photography stays visible but the page still reads ivory-first. */
 .hero::after {
   content: '';
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(to bottom, rgba(16,16,16,0.48) 0%, rgba(16,16,16,0.2) 40%, rgba(16,16,16,0.08) 60%, rgba(16,16,16,0.55) 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(245,240,230,0.96) 0%,
+    rgba(250,248,242,0.62) 42%,
+    rgba(245,240,230,0.55) 62%,
+    rgba(250,248,242,0.94) 100%
+  );
 }
 
 .hero-content {
@@ -43,15 +53,25 @@
   padding-inline: var(--gutter);
 }
 
+/* Tiny champagne hairline above the headline — an understated luxury detail. */
+.hero-content::before {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 1px;
+  margin: 0 auto clamp(1.6rem, 3vh, 2.2rem);
+  background: var(--champagne);
+}
+
 .hero-content h1 {
   margin-bottom: clamp(1.2rem, 3vh, 2.2rem);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  color: var(--charcoal);
   line-height: 1.1;
 }
 
 .hero-content .lead {
   margin-bottom: clamp(1.8rem, 4vh, 3rem);
-  color: rgba(244,240,232,0.78);
+  color: rgba(39, 35, 31, 0.72);
   font-size: clamp(0.95rem, 1.2vw, 1.15rem);
   line-height: 1.8;
 }
@@ -93,7 +113,7 @@
   font-size: 0.62rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: rgba(244,240,232,0.6);
+  color: rgba(39, 35, 31, 0.6);
   display: none;
   align-items: center;
   gap: 0.8rem;
@@ -154,6 +174,8 @@
   display: block;
   overflow: hidden;
   aspect-ratio: 4 / 5;
+  background: var(--ivory-light);
+  border: 1px solid var(--line);
 }
 
 .service-card img {
@@ -165,11 +187,17 @@
 
 .service-card:hover img { transform: scale(1.07); }
 
+/* Thin ivory gradient so titles sit on the warm surface — no heavy dark block. */
 .service-card::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.1) 55%);
+  background: linear-gradient(
+    to top,
+    rgba(245,240,230,0.97) 0%,
+    rgba(245,240,230,0.62) 42%,
+    rgba(245,240,230,0) 78%
+  );
 }
 
 .service-card-info {
@@ -180,12 +208,12 @@
   padding: 1.8rem;
 }
 
-.service-card-num { font-size: 0.68rem; letter-spacing: 0.24em; color: var(--champagne); }
-.service-card-info h3 { font-size: 1.7rem; margin: 0.5rem 0 0.4rem; }
+.service-card-num { font-size: 0.68rem; letter-spacing: 0.24em; color: var(--champagne-deep); }
+.service-card-info h3 { font-size: 1.7rem; margin: 0.5rem 0 0.4rem; color: var(--charcoal); }
 
 .service-card-info p {
   font-size: 0.88rem;
-  color: rgba(244,240,232,0.65);
+  color: rgba(39, 35, 31, 0.7);
   max-height: 0;
   opacity: 0;
   overflow: hidden;
@@ -213,7 +241,7 @@
 .portfolio-card-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(10, 10, 10, 0.45);
+  background: linear-gradient(to top, rgba(250,248,242,0.96) 0%, rgba(245,240,230,0.55) 60%, rgba(245,240,230,0.2) 100%);
   opacity: 0;
   transition: opacity 0.6s var(--ease);
   display: flex;
@@ -263,7 +291,7 @@
   .timeline-step::before { width: 100%; height: 1px; }
 }
 
-.timeline-step .num { color: var(--champagne); font-size: clamp(0.62rem, 1vw, 0.7rem); letter-spacing: 0.24em; }
+.timeline-step .num { color: var(--champagne-deep); font-size: clamp(0.62rem, 1vw, 0.7rem); letter-spacing: 0.24em; }
 .timeline-step h3 { font-size: clamp(1.3rem, 2vw, 1.5rem); margin: clamp(0.4rem, 1vh, 0.6rem) 0 clamp(0.3rem, 0.5vh, 0.5rem); }
 .timeline-step p { color: var(--gray); font-size: clamp(0.8rem, 1.2vw, 0.88rem); line-height: 1.6; }
 .light-theme .timeline-step p { color: var(--gray-dark); }
@@ -299,11 +327,13 @@
 
 .cta-section .bg { position: absolute; inset: 0; z-index: 0; }
 .cta-section .bg img { width: 100%; height: 100%; object-fit: cover; }
+/* Warm charcoal-brown wash — the CTA stays image-driven but reads as
+   part of the same warm family (matches the footer). */
 .cta-section::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(10, 10, 10, 0.68);
+  background: rgba(30, 26, 21, 0.74);
 }
 
 .cta-section .container {
@@ -311,12 +341,25 @@
   z-index: 1;
   max-width: 48rem;
 }
-.cta-section h2 { margin-bottom: clamp(1rem, 2vh, 1.4rem); }
+.cta-section h2 { margin-bottom: clamp(1rem, 2vh, 1.4rem); color: var(--ivory); }
 .cta-section .lead {
   margin: 0 auto clamp(1.8rem, 3vh, 2.4rem);
-  color: rgba(244,240,232,0.75);
+  color: rgba(250,248,242,0.85);
 }
+.cta-section .eyebrow { color: var(--champagne); }
 .cta-section .hero-actions { justify-content: center; }
+
+/* Buttons inside the image CTA — outline variant needs a light hairline. */
+.cta-section .btn-outline,
+.footer .btn-outline {
+  border-color: var(--line-light);
+  color: var(--ivory);
+}
+.cta-section .btn-outline:hover,
+.footer .btn-outline:hover {
+  border-color: var(--champagne);
+  color: var(--ivory);
+}
 
 
 /* ---------- Why (dark principles) ---------- */
@@ -331,11 +374,11 @@
 @media (min-width: 1024px) { .principles-grid { grid-template-columns: repeat(4, 1fr); } }
 
 .principle {
-  background: var(--ink);
+  background: var(--ivory-light);
   padding: clamp(1.5rem, 3vh, 3rem) clamp(1.2rem, 3vw, 2rem);
 }
-.principle .num { color: var(--champagne); font-size: clamp(0.62rem, 1vw, 0.7rem); letter-spacing: 0.24em; }
-.principle h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); margin: clamp(0.8rem, 1.5vh, 1rem) 0 clamp(0.4rem, 0.8vh, 0.6rem); line-height: 1.2; }
+.principle .num { color: var(--champagne-deep); font-size: clamp(0.62rem, 1vw, 0.7rem); letter-spacing: 0.24em; }
+.principle h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); margin: clamp(0.8rem, 1.5vh, 1rem) 0 clamp(0.4rem, 0.8vh, 0.6rem); line-height: 1.2; color: var(--charcoal); }
 .principle p { color: var(--gray); font-size: clamp(0.8rem, 1.2vw, 0.92rem); line-height: 1.6; }
 
 .service-card:hover .service-card-info p { max-height: 6rem; opacity: 1; }

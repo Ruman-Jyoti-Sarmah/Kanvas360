@@ -5,19 +5,20 @@
   left: 0;
   right: 0;
   z-index: 100;
-  transition: background 0.5s var(--ease), backdrop-filter 0.5s var(--ease), border-color 0.5s var(--ease);
+  transition: background 0.5s var(--ease), backdrop-filter 0.5s var(--ease), border-color 0.5s var(--ease), box-shadow 0.5s var(--ease);
   border-bottom: 1px solid transparent;
-  background: rgba(16, 16, 16, 0.38);
+  background: linear-gradient(to bottom, rgba(245,240,230,0.94) 0%, rgba(245,240,230,0) 100%);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom-color: rgba(255, 255, 255, 0.08);
+  border-bottom-color: transparent;
 }
 
 .navbar.scrolled {
-  background: rgba(16, 16, 16, 0.82);
+  background: rgba(250, 248, 242, 0.94);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom-color: var(--line);
+  box-shadow: 0 8px 30px rgba(39, 35, 31, 0.06);
 }
 
 .navbar {
@@ -47,11 +48,11 @@
   display: inline-flex;
   align-items: center;
   gap: clamp(0.4rem, 1vw, 0.6rem);
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  color: var(--charcoal);
   white-space: nowrap;
 }
 
-.wordmark span { color: var(--champagne); }
+.wordmark span { color: var(--champagne-deep); }
 
 .nav-logo {
   height: clamp(40px, 6vw, 58px);
@@ -59,9 +60,6 @@
   object-fit: contain;
   flex-shrink: 0;
   display: block;
-  /* Soft separation shadow so the logo reads clearly over bright hero areas */
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.55));
-  -webkit-filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.55));
 }
 
 .nav-links {
@@ -74,11 +72,10 @@
   font-weight: 500;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: rgba(244, 240, 232, 0.85);
+  color: rgba(39, 35, 31, 0.72);
   position: relative;
   padding-block: 0.4rem;
   transition: color 0.4s var(--ease);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .nav-links a::after {
@@ -94,7 +91,7 @@
   transition: transform 0.45s var(--ease);
 }
 
-.nav-links a:hover, .nav-links a.active { color: var(--ivory); }
+.nav-links a:hover, .nav-links a.active { color: var(--charcoal); }
 .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); transform-origin: left; }
 
 .nav-cta { display: none; }
@@ -161,9 +158,8 @@
   display: block;
   width: clamp(22px, 5vw, 26px);
   height: 1px;
-  background: var(--ivory);
+  background: var(--charcoal);
   transition: transform 0.45s var(--ease), opacity 0.3s var(--ease);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 .hamburger.open span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
@@ -186,7 +182,7 @@
 .mobile-menu {
   position: fixed;
   inset: 0;
-  background: var(--ink-soft);
+  background: var(--ivory-light);
   z-index: 105;
   display: flex;
   flex-direction: column;
@@ -221,9 +217,9 @@
   font-family: var(--sans);
   font-size: 0.7rem;
   letter-spacing: 0.2em;
-  color: var(--champagne);
+  color: var(--champagne-deep);
 }
-.mobile-menu-link:hover { color: var(--champagne); }
+.mobile-menu-link:hover { color: var(--champagne-deep); }
 
 .mobile-menu-cta { margin-top: 2.4rem; opacity: 0; transition: opacity 0.7s var(--ease) 0.5s; display: flex; flex-direction: column; gap: 0.8rem; }
 .mobile-menu.open .mobile-menu-cta { opacity: 1; }
@@ -231,8 +227,8 @@
 
 /* ---------- Footer ---------- */
 .footer {
-  background: #0b0b0a;
-  border-top: 1px solid var(--line);
+  background: #211D18;
+  border-top: 1px solid var(--line-light);
   padding: clamp(3.5rem, 7vw, 6rem) 0 2rem;
 }
 
@@ -246,9 +242,10 @@
   .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; }
 }
 
-.footer .wordmark { font-size: 2rem; display: inline-flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; }
+.footer .wordmark { font-size: 2rem; display: inline-flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; color: var(--ivory); }
+.footer .wordmark span { color: var(--champagne); }
 .footer-logo { width: 28px; height: 28px; flex-shrink: 0; }
-.footer-tagline { color: var(--gray); font-size: 0.95rem; max-width: 26ch; }
+.footer-tagline { color: rgba(250, 248, 242, 0.66); font-size: 0.95rem; max-width: 26ch; }
 
 .footer h4 {
   font-size: 0.68rem;
@@ -271,13 +268,13 @@
 .footer-bottom {
   margin-top: 3.5rem;
   padding-top: 1.6rem;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--line-light);
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: space-between;
   align-items: center;
-  color: var(--gray);
+  color: rgba(250, 248, 242, 0.55);
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -301,21 +298,22 @@
   align-items: center;
   justify-content: center;
   gap: 0.7rem;
-  background: var(--ivory);
-  color: var(--ink);
+  background: var(--ivory-light);
+  color: var(--charcoal);
   padding: 0.9rem 1.5rem;
   font-size: 0.68rem;
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   border-radius: 999px;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
-  transition: background 0.4s var(--ease), transform 0.4s var(--ease);
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 34px rgba(39, 35, 31, 0.2);
+  transition: background 0.4s var(--ease), border-color 0.4s var(--ease), transform 0.4s var(--ease);
   min-height: 44px;
 }
 
-.whatsapp-float:hover { background: var(--champagne); transform: translateY(-3px); }
-.whatsapp-float svg { width: 18px; height: 18px; fill: currentColor; }
+.whatsapp-float:hover { background: var(--cream); border-color: var(--champagne); transform: translateY(-3px); }
+.whatsapp-float svg { width: 18px; height: 18px; fill: var(--wa-green); }
 
 @media (max-width: 640px) {
   .whatsapp-float .wa-label { display: none; }

@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #0a0a0a;
+  background: var(--ivory);
   animation: introFadeOut 0.9s var(--ease) 1.85s forwards;
   pointer-events: auto;
 }
@@ -25,7 +25,7 @@
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.35) 0%, rgba(212, 175, 55, 0.12) 45%, rgba(10, 10, 10, 0) 70%);
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.35) 0%, rgba(212, 175, 55, 0.12) 45%, rgba(245, 240, 230, 0) 70%);
   animation: glowPulse 2.2s var(--ease) 0.15s both;
   pointer-events: none;
 }

@@ -90,7 +90,7 @@ export default function Home() {
       </section>
 
       {/* ================= FEATURED WORK ================= */}
-      <section className="section light-theme">
+      <section className="section light-theme tone-cream">
         <div className="container">
           <SectionHeading label="02 — Selected Work" title="Moments We've Created." />
           <div className="work-grid">
@@ -129,7 +129,7 @@ export default function Home() {
       </section>
 
       {/* ================= INSTAGRAM ================= */}
-      <section className="section" style={{ paddingTop: 0 }}>
+      <section className="section tone-cream" style={{ paddingTop: 0 }}>
         <div className="container">
           <SectionHeading label={contact.instagramHandle} title="Follow the Journey" />
           <Reveal className="insta-grid">

@@ -3,3 +3,5 @@ dist
 .build.log
 .dirlist.txt
 .n.txt
+
+dev-server.log
